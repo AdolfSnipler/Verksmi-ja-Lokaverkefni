@@ -1,1 +1,1 @@
-# Verksmi-ja-Lokaverkefni
+# Verksmiðja-Lokaverkefni
