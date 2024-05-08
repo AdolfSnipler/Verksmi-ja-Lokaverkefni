@@ -1,0 +1,67 @@
+from machine import Pin
+from time import sleep_ms
+from umqtt.simple import MQTTClient
+import asyncio
+
+# ------------ Tengjast WIFI -------------
+WIFI_SSID = "T Skoli Hotspot"
+WIFI_LYKILORD = ""
+
+def do_connect():
+    import network
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    if not wlan.isconnected():
+        print('connecting to network...')
+        wlan.connect(WIFI_SSID, WIFI_LYKILORD)
+        while not wlan.isconnected():
+            pass
+    print('network config:', wlan.ifconfig())
+    
+do_connect()
+
+# ---------------- MQTT ------------------
+
+MQTT_BROKER = "test.mosquitto.org"
+CLIENT_ID = "Sendir"
+TOPIC = b"2480kynning" # Settu fyrstu fjóra stafinu úr kennitölunni þinni stað í X-anna
+
+async def senda_skilabod():
+    print("senda_skilabod")
+    for x in range(0,5):
+        skilabod = "Move mouth!"
+        mqtt_client.publish(TOPIC, skilabod)
+
+    await asyncio.sleep(1)
+
+
+
+def fekk_skilabod(topic, skilabod):
+    print("fekk_skilabod")
+    print(f"TOPIC: {topic.decode()}, skilaboð: {skilabod}")
+    return skilabod
+
+mqtt_client = MQTTClient(CLIENT_ID, MQTT_BROKER, keepalive=60)
+mqtt_client.set_callback(fekk_skilabod)
+mqtt_client.connect()
+mqtt_client.subscribe(TOPIC)
+
+
+async def mottaka_skilabod():
+    print("mottaka_skilabod")
+    checker = mqtt_client.check_msg()
+    await asyncio.sleep(1)
+    if checker != None:
+        print("mjes")
+# In each ESP module, replace while True loop and main definition with:
+
+async def main():
+    while True:
+        await asyncio.gather(mottaka_skilabod(), senda_skilabod())
+        await asyncio.sleep(0.1)  # allows some delay for other tasks
+
+# At the bottom of your script, outside any function:
+if __name__ == "__main__":
+    asyncio.run(main())
+
+
