@@ -6,11 +6,11 @@ servo = myServo(9)
 
 async def control_servo(servo):
     while True:
-        for angle in range(0, 181):
+        for angle in range(45, -46, -1):  # from 45 to -45
             servo.myServoWriteAngle(angle)
             await asyncio.sleep_ms(10)  # Adjust the delay for desired speed
         
-        for angle in range(180, -1, -1):
+        for angle in range(-45, 46):  # from -45 to 45
             servo.myServoWriteAngle(angle)
             await asyncio.sleep_ms(10)  # Adjust the delay for desired speed
 
