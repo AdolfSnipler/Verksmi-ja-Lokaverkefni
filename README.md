@@ -5,8 +5,11 @@ Hér er hlekkur með vídeóum af virkni tveggja fígúrunar:
 https://drive.google.com/drive/folders/1prgnYcs-6yHCYiUFu2h6Yd7OHaJBvrzQ?usp=sharing
 
 <br>
-![IMG_0503] https://github.com/AdolfSnipler/Verksmi-ja-Lokaverkefni/assets/111883171/58b6daa5-c570-4267-8a6c-2a420614e7c8
+
+![IMG_0503](https://github.com/AdolfSnipler/Verksmi-ja-Lokaverkefni/assets/111883171/c488d58f-70bd-4444-8a59-1fc13f024569)
+
 
 ![IMG_0502](https://github.com/AdolfSnipler/Verksmi-ja-Lokaverkefni/assets/111883171/fe0fb9b9-65cc-4c8f-83f3-cd2c029599f6)
+
 
 ![block_diagram](https://github.com/AdolfSnipler/Verksmi-ja-Lokaverkefni/assets/111883171/cc34aef7-fddf-4d89-a78e-8e610385f5ec)
